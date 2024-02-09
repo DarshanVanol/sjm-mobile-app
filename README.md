@@ -1,4 +1,4 @@
-# sjm_app
+# sjm
 
 A new Flutter project.
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sjm_app/ui/screens/home.dart';
+import 'package:sjm/ui/screens/home.dart';
 
 class DashboardScreen extends StatefulWidget {
   @override

@@ -5,14 +5,14 @@ class User {
   final DateTime createdAt;
   final DateTime updatedAt;
   final String name;
-  final String roleId;
+  final String roleCode;
 
   User({
     required this.id,
     required this.createdAt,
     required this.updatedAt,
     required this.name,
-    required this.roleId,
+    required this.roleCode,
   });
 
   factory User.fromJson(Map<String, dynamic> json) {
@@ -21,7 +21,7 @@ class User {
       createdAt: DateTime.parse(json['createdAt']),
       updatedAt: DateTime.parse(json['updatedAt']),
       name: json['name'],
-      roleId: json['roleId'],
+      roleCode: json['roleId'],
     );
   }
 
@@ -31,7 +31,7 @@ class User {
       'createdAt': createdAt.toIso8601String(),
       'updatedAt': updatedAt.toIso8601String(),
       'name': name,
-      'roleId': roleId,
+      'roleId': roleCode,
     };
   }
 
@@ -47,13 +47,13 @@ class User {
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
       name: name ?? this.name,
-      roleId: roleId ?? this.roleId,
+      roleCode: roleId ?? this.roleCode,
     );
   }
 
   @override
   String toString() {
-    return 'User(id: $id, createdAt: $createdAt, updatedAt: $updatedAt, name: $name, roleId: $roleId)';
+    return 'User(id: $id, createdAt: $createdAt, updatedAt: $updatedAt, name: $name, roleId: $roleCode)';
   }
 
 

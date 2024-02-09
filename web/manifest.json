@@ -1,6 +1,6 @@
 {
-    "name": "sjm_app",
-    "short_name": "sjm_app",
+    "name": "sjm",
+    "short_name": "sjm",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

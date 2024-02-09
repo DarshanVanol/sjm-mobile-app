@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "533836159104",
+    "project_id": "sjm-app-c60ff",
+    "storage_bucket": "sjm-app-c60ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:533836159104:android:f7b0ee82ec92e8ac772e65",
+        "android_client_info": {
+          "package_name": "com.example.sjm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlkgiAToTRVjyPDnGDkg113ZSA9jwprm0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
