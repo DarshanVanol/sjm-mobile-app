@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sjm/ui/screens/home.dart';
 
 class DashboardScreen extends StatefulWidget {
+  static DashboardScreen builder(BuildContext context, GoRouterState state) =>
+      DashboardScreen();
   @override
   _DashboardScreenState createState() => _DashboardScreenState();
 }
