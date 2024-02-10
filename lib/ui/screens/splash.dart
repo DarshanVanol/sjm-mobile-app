@@ -24,8 +24,6 @@ class _SplashScreenState extends State<SplashScreen> {
     if (mounted) {
       context.push(SJMRoutes.dashboard);
     }
-    // Navigator.push(
-    //     context, MaterialPageRoute(builder: (context) => DashboardScreen()));
   }
 
   @override
