@@ -27,15 +27,15 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     final _pref = ref.read(sharedPrefHelperProvider);
     final jwt = _pref.authToken;
 
-    if (jwt != null) {
+    //if (jwt != null) {
       if (mounted) {
         context.push(SJMRoutes.dashboard);
       }
-    } else {
-      if (mounted) {
-        context.push(SJMRoutes.login);
-      }
-    }
+    // } else {
+    //   if (mounted) {
+    //     context.push(SJMRoutes.login);
+    //   }
+    // }
     // final jwt = _preferenceHelper.authToken;
   }
 
