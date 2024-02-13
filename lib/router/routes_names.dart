@@ -1,8 +1,8 @@
 class SJMRoutes {
   static const splash = '/splash';
   static const login = '/login';
-  static const otpScreen = '/otpScreen';
-  static const addExpenseScreen = '/addExpenseScreen';
+  static const resetPassword = '/resetPassword';
+  static const emailSent = '/emailSent';
   static const addPayerScreen = '/addPayerScreen';
   static const expenseDetailsScreen = '/expenseDetailsScreen';
   static const chatScreen = '/chatScreen';
