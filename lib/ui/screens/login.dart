@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sjm/common/theme/theme.dart';
+import 'package:sjm/gen/assets/assets.gen.dart';
+import 'package:sjm/router/routes_names.dart';
 
 class LoginScreen extends StatefulWidget {
   static LoginScreen builder(BuildContext context, GoRouterState state) =>
@@ -16,23 +20,57 @@ class _LoginScreenState extends State<LoginScreen> {
   String _email = '';
 
   String _password = '';
+  bool isShowPassword = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Login'),
-      ),
-      body: Center(
-        child: Form(
-          key: _formKey,
+      body: Form(
+        key: _formKey,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 24.w),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              SJMAssets.images.logo.image(
+                height: 90.h,
+              ),
+              SizedBox(
+                height: 24.h,
+              ),
+              Text(
+                "Welcome,",
+                style: TextStyle(
+                    color: smjColorsExtension.primary,
+                    fontSize: 26.sp,
+                    fontWeight: FontWeight.w700),
+              ),
+              SizedBox(
+                height: 2.h,
+              ),
+              Text(
+                "Login to continue!",
+                style: TextStyle(
+                    color: smjColorsExtension.lightGrey,
+                    fontSize: 22.sp,
+                    fontWeight: FontWeight.w300),
+              ),
+              SizedBox(
+                height: 34.h,
+              ),
               TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'Email',
-                ),
+                decoration: InputDecoration(
+                    hintText: "johndoe@email.com",
+                    hintStyle: TextStyle(color: smjColorsExtension.lightGrey),
+                    labelText: 'Email address',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(
+                          10.r,
+                        ),
+                      ),
+                    ),
+                    floatingLabelBehavior: FloatingLabelBehavior.always),
                 onSaved: (value) => _email = value!,
                 validator: (value) {
                   RegExp emailRegex =
@@ -43,23 +81,78 @@ class _LoginScreenState extends State<LoginScreen> {
                   return null;
                 },
               ),
+              SizedBox(
+                height: 24.h,
+              ),
               TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'Password',
-                  // Add secure password visibility toggle (e.g., using an icon)
-                ),
-                obscureText: true,
+                decoration: InputDecoration(
+                    suffixIcon: InkWell(
+                        onTap: () {
+                          isShowPassword = !isShowPassword;
+                          setState(() {});
+                        },
+                        child: Icon(
+                          isShowPassword
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                          color: smjColorsExtension.lightGrey,
+                        )),
+                    hintText: "*******",
+                    hintStyle: TextStyle(color: smjColorsExtension.lightGrey),
+                    labelText: 'Password',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(
+                          10.r,
+                        ),
+                      ),
+                    ),
+                    floatingLabelBehavior: FloatingLabelBehavior.always),
+                obscureText: !isShowPassword,
                 onSaved: (value) => _password = value!,
+              ),
+              SizedBox(height: 16.h),
+              Align(
+                alignment: Alignment.topRight,
+                child: InkWell(
+                  onTap: () => context.push(SJMRoutes.resetPassword),
+                  child: Text(
+                    "Forgot Password?",
+                    style: TextStyle(
+                      fontSize: 12.sp,
+                    ),
+                  ),
+                ),
               ),
               const SizedBox(height: 20),
               ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStatePropertyAll(smjColorsExtension.primary),
+                  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(8.r)))),
+                  minimumSize: MaterialStatePropertyAll(
+                    Size(
+                      double.infinity,
+                      0,
+                    ),
+                  ),
+                ),
                 onPressed: () {
                   // Validate inputs before calling _loginUser
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
                   }
                 },
-                child: Text('Login'),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 16.h,
+                  ),
+                  child: Text(
+                    'Login',
+                    style: TextStyle(color: Colors.white, fontSize: 16.sp),
+                  ),
+                ),
               ),
               // Optional: Add forgot password link, terms and conditions checkbox
             ],
