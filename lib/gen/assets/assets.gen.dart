@@ -14,11 +14,23 @@ import 'package:flutter/services.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/Home.svg
+  SvgGenImage get home => const SvgGenImage('assets/icons/Home.svg');
+
   /// File path: assets/icons/add_icon.svg
   SvgGenImage get addIcon => const SvgGenImage('assets/icons/add_icon.svg');
 
+  /// File path: assets/icons/customer.svg
+  SvgGenImage get customer => const SvgGenImage('assets/icons/customer.svg');
+
+  /// File path: assets/icons/order.svg
+  SvgGenImage get order => const SvgGenImage('assets/icons/order.svg');
+
+  /// File path: assets/icons/product.svg
+  SvgGenImage get product => const SvgGenImage('assets/icons/product.svg');
+
   /// List of all assets
-  List<SvgGenImage> get values => [addIcon];
+  List<SvgGenImage> get values => [home, addIcon, customer, order, product];
 }
 
 class $AssetsImagesGen {
