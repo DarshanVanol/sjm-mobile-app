@@ -24,13 +24,17 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
 
   Future<void> _navigateToNextScreen() async {
     await Future.delayed(const Duration(seconds: 1));
-    final _pref = ref.read(sharedPrefHelperProvider);
-    final jwt = _pref.authToken;
+    // final _pref = ref.read(sharedPrefHelperProvider);
+    // final jwt = _pref.authToken;
 
     //if (jwt != null) {
-      if (mounted) {
-        context.push(SJMRoutes.dashboard);
-      }
+    // if (mounted) {
+    //   context.push(SJMRoutes.dashboard);
+    // }
+
+    if (mounted) {
+      context.push(SJMRoutes.login);
+    }
     // } else {
     //   if (mounted) {
     //     context.push(SJMRoutes.login);
@@ -56,7 +60,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
           ),
           Text("Design Consultant",
               style: TextStyle(
-                  color: Color(0xFF404040),
+                  color: const Color(0xFF404040),
                   fontWeight: FontWeight.w500,
                   fontSize: 16.sp))
         ]),

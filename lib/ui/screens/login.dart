@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sjm/bloc/firebase_service.dart';
 import 'package:sjm/common/theme/theme.dart';
 import 'package:sjm/gen/assets/assets.gen.dart';
 import 'package:sjm/router/routes_names.dart';
@@ -138,10 +139,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-                onPressed: () {
+                onPressed: () async {
                   // Validate inputs before calling _loginUser
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
+                    final auth = AuthService();
+                    final result = await auth.signInWithEmailAndPassword(
+                        _email.trim(), _password.trim(), context);
+                    if (result != null) {
+                      if (mounted) {
+                        context.go(SJMRoutes.dashboard);
+                      }
+                    }
                   }
                 },
                 child: Padding(
