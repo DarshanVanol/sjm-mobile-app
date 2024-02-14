@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:sjm/router/routes_names.dart';
+import 'package:sjm/ui/screens/add_meeting_screen.dart';
 import 'package:sjm/ui/screens/dashboard.dart';
 import 'package:sjm/ui/screens/email_sent.dart';
 import 'package:sjm/ui/screens/login.dart';
@@ -26,5 +27,9 @@ final routes = [
   GoRoute(
     path: SJMRoutes.resetPassword,
     builder: (context, state) => EmailSentScreen.builder(context, state),
+  ),
+  GoRoute(
+    path: SJMRoutes.addMettingScreen,
+    builder: (context, state) => AddMettingScreen.builder(context, state),
   ),
 ];

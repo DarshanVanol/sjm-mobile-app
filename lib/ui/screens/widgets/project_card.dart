@@ -1,121 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
-import 'package:sjm/common/primary_appbar.dart';
 import 'package:sjm/common/theme/theme.dart';
-import 'package:sjm/gen/assets/assets.gen.dart';
-import 'package:sjm/router/routes_names.dart';
 import 'package:sjm/ui/screens/widgets/popupmenu_btn.dart';
 
-class HomeScreen extends StatelessWidget {
-  final projectStatus = ["In Progress", "In Review", "On Hold", "Completed"];
-  final List<Color> widgetColor = [
-    smjColorsExtension.lightBlue,
-    smjColorsExtension.lightPurple,
-    smjColorsExtension.lightOrange,
-    smjColorsExtension.green,
-  ];
-  @override
-  Widget build(BuildContext context) {
-    final color = smjColorsExtension;
-    return Scaffold(
-        backgroundColor: color.background,
-        appBar: PrimaryAppBar(title: "Dashboard", leadingBackButton: false),
-        body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 8.h),
-          child: SingleChildScrollView(
-            physics: AlwaysScrollableScrollPhysics(),
-            child: Column(
-              children: [
-                GridView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 8.w,
-                    childAspectRatio: 6 / 4,
-                    crossAxisSpacing: 8.w,
-                  ),
-                  itemBuilder: (context, index) => Container(
-                    decoration: BoxDecoration(
-                      color: widgetColor[index],
-                      borderRadius: BorderRadius.all(Radius.circular(16.r)),
-                      border: Border.all(
-                        color: color.primary,
-                        width: 1.sp,
-                      ),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(16.h),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "12",
-                            style: TextStyle(
-                              color: color.primary,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 32.sp,
-                            ),
-                          ),
-                          Text(
-                            projectStatus[index],
-                            style: TextStyle(
-                              color: color.primary,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 18.sp,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  itemCount: 4,
-                ),
-                SizedBox(
-                  height: 24.h,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Upcoming meetings",
-                      style: TextStyle(
-                        color: color.primary,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 18.sp,
-                      ),
-                    ),
-                    InkWell(
-                      child: SJMAssets.icons.addIcon.svg(
-                        height: 24.w,
-                        width: 24.w,
-                      ),
-                      onTap: () =>  context.push(SJMRoutes.addMettingScreen),
-                    )
-                  ],
-                ),
-                SizedBox(
-                  height: 16.h,
-                ),
-                ListView.builder(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  itemCount: 10,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) => upcomingMeetingCard(color),
-                ),
-                SizedBox(
-                  height: 100.h,
-                ),
-              ],
-            ),
-          ),
-        ));
-  }
-
-  Widget upcomingMeetingCard(SmjColors color) {
-    final List<PopupMenuEntry> _popupMenuList = [ PopupMenuItem(
+class ProjectCard extends StatelessWidget {
+   ProjectCard({super.key});
+ final List<PopupMenuEntry> _popupMenuList = [ PopupMenuItem(
         value: 1,
         height: 20,
         child: Text(
@@ -137,6 +27,9 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),];
+  @override
+  Widget build(BuildContext context) {
+    final color = smjColorsExtension;
     return Padding(
                   padding: EdgeInsets.symmetric(vertical: 4.h),
                   child: Container(
@@ -228,5 +121,6 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 );
+  ;
   }
 }
