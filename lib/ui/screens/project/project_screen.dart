@@ -6,6 +6,7 @@ import 'package:sjm/router/routes_names.dart';
 import 'package:sjm/ui/screens/add_meeting_screen.dart';
 import 'package:sjm/ui/screens/widgets/main_appbar.dart';
 import 'package:sjm/ui/screens/widgets/project_card.dart';
+import 'package:sjm/ui/screens/widgets/search_app_bar.dart';
 
 class ProjectScreen extends StatefulWidget {
   ProjectScreen({super.key});
@@ -37,16 +38,29 @@ class _ProjectScreenState extends State<ProjectScreen> {
       isSelected: false,
     )
   ];
-
+  bool isSearch = false;
+final searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final colors = smjColorsExtension;
     return Scaffold(
       backgroundColor: colors.background,
-      appBar: MainAppBar(
+      appBar: isSearch?SearchAppBar(context: context, controller: searchController,
+       onTrailIcTap: () {
+        isSearch=false;
+        setState(() {
+          
+        });
+         
+       }, isSearch: isSearch, onEditingComplete:() {
+         
+       },): MainAppBar(
         title: "Projects",
         secLastIc: InkWell(
-          onTap: () {},
+          onTap: () {isSearch=true;
+          setState(() {
+            
+          });},
           child: SizedBox(
             width: 30.w,
             height: 30.h,
@@ -57,7 +71,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
             ),
           ),
         ),
-        onTapRight: () => context.push(SJMRoutes.addMettingScreen),
+        onTapRight: () => context.push(SJMRoutes.projectDetailsScreen),
       ),
       body: Stack(
         children: [
@@ -94,7 +108,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
                   scrollDirection: Axis.vertical,
                   itemCount: 10,
                   physics: const AlwaysScrollableScrollPhysics(),
-                  itemBuilder: (context, index) => ProjectCard(),
+                  itemBuilder: (context, index) => ProjectCard(onCardTap: () => context.push(SJMRoutes.projectDetailsScreen),),
                 ),
               ),
             ),
