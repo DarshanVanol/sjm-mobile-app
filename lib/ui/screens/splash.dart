@@ -24,17 +24,23 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
 
   Future<void> _navigateToNextScreen() async {
     await Future.delayed(const Duration(seconds: 1));
-    // final _pref = ref.read(sharedPrefHelperProvider);
-    // final jwt = _pref.authToken;
-
+    final _pref = ref.read(sharedPrefHelperProvider);
+    final isLoggedIn = _pref.isLoggedIn;
+    print("isLoggedin: $isLoggedIn");
+    if (isLoggedIn) {
+      if (mounted) {
+        context.push(SJMRoutes.dashboard);
+      }
+    } else {
+      if (mounted) {
+        context.push(SJMRoutes.login);
+      }
+    }
     //if (jwt != null) {
     // if (mounted) {
     //   context.push(SJMRoutes.dashboard);
     // }
 
-    if (mounted) {
-      context.push(SJMRoutes.login);
-    }
     // } else {
     //   if (mounted) {
     //     context.push(SJMRoutes.login);
