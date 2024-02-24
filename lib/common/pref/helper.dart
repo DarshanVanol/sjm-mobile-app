@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:sjm/common/pref/preferences.dart';
+import 'package:sjm/data/models/user_model.dart';
 
 class SharedPreferenceHelper {
   final Preference _sharedPreference;
@@ -52,12 +54,19 @@ class SharedPreferenceHelper {
     return _sharedPreference.getString(PrefKeys.email);
   }
 
-  Future<void> saveUserId(String id) async {
-    await _sharedPreference.setString(PrefKeys.uid, id);
+  Future<void> saveUser(User user) async {
+    final String userString = user.toJson().toString();
+    print("userString: $userString");
+    await _sharedPreference.setString(PrefKeys.user, userString);
   }
 
-  String? get uid {
-    return _sharedPreference.getString(PrefKeys.uid);
+  User? get user {
+    final user = _sharedPreference.getString(PrefKeys.user);
+    print("user pref: $user");
+    if (user != null) {
+      return User.fromJson(jsonDecode(user));
+    }
+    return null;
   }
 
   Future<void> clear() async {
@@ -71,5 +80,5 @@ mixin PrefKeys {
   static const String authToken = "authToken";
   static const String userName = "userName";
   static const String email = "email";
-  static const String uid = "uid";
+  static const String user = "user";
 }

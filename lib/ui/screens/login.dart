@@ -158,6 +158,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         final userRepo = ref.read(userRepositoryProvider);
                         final user = await userRepo.getUser(_email.trim());
                         if (user != null) {
+                          _pref.saveUser(user);
                           _pref.saveUserName(user.name);
                           ref.read(userProvider.notifier).state = user;
                         } else {
@@ -231,6 +232,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               'roleId': 'user'
                             });
                             _pref.saveUserName(user.name);
+                            _pref.saveUser(user);
                             ref.read(userProvider.notifier).state = user;
                           }
                         }

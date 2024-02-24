@@ -28,6 +28,12 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     final isLoggedIn = _pref.isLoggedIn;
     print("isLoggedin: $isLoggedIn");
     if (isLoggedIn) {
+      final user = _pref.user;
+      print("user: $user");
+      if (user != null) {
+        ref.read(userProvider.notifier).state = user;
+      }
+
       if (mounted) {
         context.push(SJMRoutes.dashboard);
       }
