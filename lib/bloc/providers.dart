@@ -3,6 +3,7 @@ import 'package:sjm/bloc/firebase_service.dart';
 import 'package:sjm/common/pref/helper.dart';
 import 'package:sjm/common/pref/preferences.dart';
 import 'package:sjm/data/models/user_model.dart';
+import 'package:sjm/data/repositories/project_repo.dart';
 import 'package:sjm/data/repositories/user_repo.dart';
 
 final preferencesProvider = Provider<Preference>((ref) {
@@ -22,3 +23,7 @@ final userRepositoryProvider = Provider<UserRepository>((ref) {
 });
 
 final userProvider = StateProvider<User?>((ref) => null);
+
+final projectReoProvider = Provider<ProjectRepository>((ref) {
+  return ProjectRepository();
+});

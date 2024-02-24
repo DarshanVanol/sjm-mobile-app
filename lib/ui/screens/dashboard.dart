@@ -20,19 +20,6 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
   int selectedIndex = 0;
   // int _currentIndex = 0;
 
-  @override
-  void initState() {
-    final user = ref.read(userProvider);
-    final pref = ref.read(sharedPrefHelperProvider);
-    final username = pref.userName;
-    print("Username: $username");
-    final email = pref.userEmail;
-    print("Email: $email");
-
-    print("User: $user");
-    super.initState();
-  }
-
   final List<Widget> _screens = [
     HomeScreen(),
     ProjectScreen(),
