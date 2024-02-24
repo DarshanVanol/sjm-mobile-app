@@ -1,14 +1,14 @@
 import 'package:flutter/foundation.dart';
 
 class User {
-  final String id;
+  final String email;
   final DateTime createdAt;
   final DateTime updatedAt;
   final String name;
   final String roleCode;
 
   User({
-    required this.id,
+    required this.email,
     required this.createdAt,
     required this.updatedAt,
     required this.name,
@@ -17,7 +17,7 @@ class User {
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
-      id: json['id'],
+      email: json['email'],
       createdAt: DateTime.parse(json['createdAt']),
       updatedAt: DateTime.parse(json['updatedAt']),
       name: json['name'],
@@ -27,7 +27,7 @@ class User {
 
   Map<String, dynamic> toJson() {
     return {
-      'id': id,
+      'email': email,
       'createdAt': createdAt.toIso8601String(),
       'updatedAt': updatedAt.toIso8601String(),
       'name': name,
@@ -36,14 +36,14 @@ class User {
   }
 
   User copyWith({
-    String? id,
+    String? email,
     DateTime? createdAt,
     DateTime? updatedAt,
     String? name,
     String? roleId,
   }) {
     return User(
-      id: id ?? this.id,
+      email: email ?? this.email,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
       name: name ?? this.name,
@@ -53,9 +53,6 @@ class User {
 
   @override
   String toString() {
-    return 'User(id: $id, createdAt: $createdAt, updatedAt: $updatedAt, name: $name, roleId: $roleCode)';
+    return 'User(email: $email, createdAt: $createdAt, updatedAt: $updatedAt, name: $name, roleId: $roleCode)';
   }
-
-
 }
-

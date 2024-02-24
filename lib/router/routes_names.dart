@@ -3,7 +3,7 @@ class SJMRoutes {
   static const login = '/login';
   static const resetPassword = '/resetPassword';
   static const emailSent = '/emailSent';
-  static const addPayerScreen = '/addPayerScreen';
+  static const createNewPassword = '/createNewPassword';
   static const expenseDetailsScreen = '/expenseDetailsScreen';
   static const chatScreen = '/chatScreen';
   static const completeProfileScreen = '/completeProfileScreen';

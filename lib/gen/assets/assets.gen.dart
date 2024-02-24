@@ -39,8 +39,11 @@ class $AssetsImagesGen {
   /// File path: assets/images/Logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/Logo.png');
 
+  /// File path: assets/images/email.png
+  AssetGenImage get email => const AssetGenImage('assets/images/email.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [logo];
+  List<AssetGenImage> get values => [logo, email];
 }
 
 class SJMAssets {
