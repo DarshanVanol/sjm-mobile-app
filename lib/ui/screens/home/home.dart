@@ -5,7 +5,9 @@ import 'package:go_router/go_router.dart';
 import 'package:sjm/bloc/providers.dart';
 import 'package:sjm/common/primary_appbar.dart';
 import 'package:sjm/common/theme/theme.dart';
+import 'package:sjm/data/models/meeting_model.dart';
 import 'package:sjm/data/models/project_model.dart';
+import 'package:sjm/data/repositories/meeting_repo.dart';
 import 'package:sjm/data/repositories/project_repo.dart';
 import 'package:sjm/gen/assets/assets.gen.dart';
 import 'package:sjm/router/routes_names.dart';
@@ -145,12 +147,18 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 SizedBox(
                   height: 16.h,
                 ),
-                ListView.builder(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  itemCount: 10,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) => upcomingMeetingCard(color),
+                StreamBuilder(
+                  stream: MeetingRepository().getMeetings(),
+                  builder: (context, snapshot) => ListView.builder(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    itemCount: snapshot.hasData
+                        ? snapshot.data?.length
+                        : 0, //snapshot.data.length,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) => upcomingMeetingCard(
+                        color, snapshot.data![index]), //snapshot.data[index]),
+                  ),
                 ),
                 SizedBox(
                   height: 100.h,
@@ -161,7 +169,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         ));
   }
 
-  Widget upcomingMeetingCard(SmjColors color) {
+  Widget upcomingMeetingCard(SmjColors color, Meeting meeting) {
     final List<PopupMenuEntry> _popupMenuList = [
       PopupMenuItem(
         value: 1,
@@ -203,7 +211,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Home Interior design",
+                  meeting.title ?? "Meeting",
                   style:
                       TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
                 ),
@@ -243,7 +251,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               height: 4.h,
             ),
             Text(
-              "Ashwin Kumar",
+              "Client Name: ${meeting.customerId}" ??
+                  "Client Name: Manish Sharma",
               style: TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 14.sp,
@@ -263,7 +272,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   width: 4.w,
                 ),
                 Text(
-                  "14 Nov, 2024 - 10:00 PM",
+                  meeting.scheduledOn.toIso8601String() ?? "01/01/2024",
                   style: TextStyle(
                       fontWeight: FontWeight.w400,
                       fontSize: 14.sp,
