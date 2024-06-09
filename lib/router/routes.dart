@@ -5,6 +5,7 @@ import 'package:sjm/ui/screens/add_meeting_screen.dart';
 import 'package:sjm/ui/screens/dashboard.dart';
 import 'package:sjm/ui/screens/email_sent.dart';
 import 'package:sjm/ui/screens/login.dart';
+import 'package:sjm/ui/screens/project/add_project_screen.dart';
 import 'package:sjm/ui/screens/project/project_details_screen.dart';
 import 'package:sjm/ui/screens/reset_password.dart';
 import 'package:sjm/ui/screens/splash.dart';
@@ -42,5 +43,9 @@ final routes = [
   GoRoute(
     path: SJMRoutes.projectDetailsScreen,
     builder: (context, state) => ProjectDetailsScreen.builder(context, state),
+  ),
+    GoRoute(
+    path: SJMRoutes.addProjectScreen,
+    builder: (context, state) => AddProjectScreen.builder(context, state),
   ),
 ];

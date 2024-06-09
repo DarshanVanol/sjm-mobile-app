@@ -17,4 +17,5 @@ class SJMRoutes {
   static const errorScreen = '/errorScreen';
   static const addMettingScreen = '/addMeetingScreen';
   static const projectDetailsScreen = '/projectDetailsScreen';
+  static const addProjectScreen = '/addProjectScreen';
 }
