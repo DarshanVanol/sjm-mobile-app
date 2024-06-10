@@ -65,22 +65,7 @@ class ProjectCard extends StatelessWidget {
                         if (value == 1) {
                           //onEditTap();
                         } else if (value == 2) {
-                          // showDialog(
-                          //   context: context,
-                          //   builder: (context) {
-                          //     return PrimaryAlertDialog(
-                          //       leftBtn: "Cancel",
-                          //       rightBtn: "Delete",
-                          //       onLeftClick: () => context.pop(),
-                          //       title: "Alert!",
-                          //       onRightClick: () async {
-                          //         onDeleteTap();
-                          //         context.pop();
-                          //       },
-                          //       subTitle: "Are you sure want to delete this vendor?",
-                          //     );
-                          //   },
-                          // );
+                        
                         }
                       },
                       popMenuList: _popupMenuList,

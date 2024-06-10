@@ -38,40 +38,42 @@ class _ProjectScreenState extends State<ProjectScreen> {
     )
   ];
   bool isSearch = false;
-final searchController = TextEditingController();
+  final searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final colors = smjColorsExtension;
     return Scaffold(
       backgroundColor: colors.background,
-      appBar: isSearch?SearchAppBar(context: context, controller: searchController,
-       onTrailIcTap: () {
-        isSearch=false;
-        setState(() {
-          
-        });
-         
-       }, isSearch: isSearch, onEditingComplete:() {
-         
-       },): MainAppBar(
-        title: "Projects",
-        secLastIc: InkWell(
-          onTap: () {isSearch=true;
-          setState(() {
-            
-          });},
-          child: SizedBox(
-            width: 30.w,
-            height: 30.h,
-            child: Icon(
-              Icons.search,
-              color: colors.primary,
-              size: 26.sp,
+      appBar: isSearch
+          ? SearchAppBar(
+              context: context,
+              controller: searchController,
+              onTrailIcTap: () {
+                isSearch = false;
+                setState(() {});
+              },
+              isSearch: isSearch,
+              onEditingComplete: () {},
+            )
+          : MainAppBar(
+              title: "Projects",
+              secLastIc: InkWell(
+                onTap: () {
+                  isSearch = true;
+                  setState(() {});
+                },
+                child: SizedBox(
+                  width: 30.w,
+                  height: 30.h,
+                  child: Icon(
+                    Icons.search,
+                    color: colors.primary,
+                    size: 26.sp,
+                  ),
+                ),
+              ),
+              onTapRight: () => context.push(SJMRoutes.addProjectScreen),
             ),
-          ),
-        ),
-        onTapRight: () => context.push(SJMRoutes.projectDetailsScreen),
-      ),
       body: Stack(
         children: [
           Positioned(
@@ -85,11 +87,11 @@ final searchController = TextEditingController();
                   return projectStatusChip(
                     data: status[index],
                     onChipClick: () {
-                      for (var element in status) {element.isSelected=false;}
-                      status[index].isSelected=true;
-                      setState(() {
-                        
+                      status.forEach((element) {
+                        element.isSelected = false;
                       });
+                      status[index].isSelected = true;
+                      setState(() {});
                     },
                     // label: status[index].name,
                   );
@@ -107,12 +109,14 @@ final searchController = TextEditingController();
                   scrollDirection: Axis.vertical,
                   itemCount: 10,
                   physics: const AlwaysScrollableScrollPhysics(),
-                  itemBuilder: (context, index) => ProjectCard(onCardTap: () => context.push(SJMRoutes.projectDetailsScreen),),
+                  itemBuilder: (context, index) => ProjectCard(
+                    onCardTap: () =>
+                        context.push(SJMRoutes.projectDetailsScreen),
+                  ),
                 ),
               ),
             ),
           ),
-          
         ],
       ),
     );
@@ -123,7 +127,8 @@ class projectStatusChip extends StatelessWidget {
   const projectStatusChip({
     super.key,
     // required this.label,
-    required this.data, required this.onChipClick,
+    required this.data,
+    required this.onChipClick,
   });
   final StatusModel data;
   final void Function() onChipClick;
