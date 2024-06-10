@@ -14,7 +14,7 @@ class ProjectDetailsScreen extends StatelessWidget {
       appBar: PrimaryAppBar(title: "Project Details", leadingBackButton: true,onBackPress: () => context.pop(),),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 8.h),
-        child:SizedBox())
+        child:const SizedBox())
 
     );
   }

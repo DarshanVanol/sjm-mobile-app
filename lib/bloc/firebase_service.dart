@@ -44,10 +44,11 @@ class AuthService {
       ));
       return null;
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Something went wrong. Please try again later."),
       ));
     }
+    return null;
   }
 
 // Registration function

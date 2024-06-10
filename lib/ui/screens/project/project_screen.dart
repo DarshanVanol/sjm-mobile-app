@@ -3,13 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sjm/common/theme/theme.dart';
 import 'package:sjm/router/routes_names.dart';
-import 'package:sjm/ui/screens/add_meeting_screen.dart';
 import 'package:sjm/ui/screens/widgets/main_appbar.dart';
 import 'package:sjm/ui/screens/widgets/project_card.dart';
 import 'package:sjm/ui/screens/widgets/search_app_bar.dart';
 
 class ProjectScreen extends StatefulWidget {
-  ProjectScreen({super.key});
+  const ProjectScreen({super.key});
 
   @override
   State<ProjectScreen> createState() => _ProjectScreenState();
@@ -86,7 +85,7 @@ final searchController = TextEditingController();
                   return projectStatusChip(
                     data: status[index],
                     onChipClick: () {
-                      status.forEach((element) {element.isSelected=false;});
+                      for (var element in status) {element.isSelected=false;}
                       status[index].isSelected=true;
                       setState(() {
                         

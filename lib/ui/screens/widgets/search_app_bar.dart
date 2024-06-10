@@ -60,6 +60,7 @@ class SearchAppBar extends AppBar {
             ),
           ],
         ); //   @override
+  @override
   Size get preferredSize => Size.fromHeight(70.h);
 }
 // class SearchAppBar extends StatelessWidget implements PreferredSizeWidget {

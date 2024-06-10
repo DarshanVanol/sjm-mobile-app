@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sjm/bloc/providers.dart';
 import 'package:sjm/ui/screens/admin/admin_screen.dart';
 import 'package:sjm/ui/screens/expense/expense_screen.dart';
 import 'package:sjm/ui/screens/home/home.dart';
@@ -10,8 +9,10 @@ import 'package:sjm/ui/screens/project/project_screen.dart';
 import 'package:sjm/ui/screens/widgets/primary_bottom_navigation.dart';
 
 class DashboardScreen extends ConsumerStatefulWidget {
+  const DashboardScreen({super.key});
+
   static DashboardScreen builder(BuildContext context, GoRouterState state) =>
-      DashboardScreen();
+      const DashboardScreen();
   @override
   _DashboardScreenState createState() => _DashboardScreenState();
 }
@@ -21,10 +22,10 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
   // int _currentIndex = 0;
 
   final List<Widget> _screens = [
-    HomeScreen(),
-    ProjectScreen(),
-    ExpenseScreen(),
-    AdminScreen()
+    const HomeScreen(),
+    const ProjectScreen(),
+    const ExpenseScreen(),
+    const AdminScreen()
   ];
   void _onBottomNavItemTap(int index) {
     setState(() {

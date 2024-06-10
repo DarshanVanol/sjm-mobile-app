@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:sjm/bloc/firebase_service.dart';
 import 'package:sjm/common/primary_appbar.dart';
 import 'package:sjm/common/theme/theme.dart';
-import 'package:sjm/router/routes_names.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
   static ResetPasswordScreen builder(
@@ -14,7 +13,7 @@ class ResetPasswordScreen extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    String _email = '';
+    String email = '';
     return Scaffold(
       backgroundColor: smjColorsExtension.background,
       appBar: PrimaryAppBar(
@@ -53,11 +52,11 @@ class ResetPasswordScreen extends StatelessWidget {
                     ),
                   ),
                   floatingLabelBehavior: FloatingLabelBehavior.always),
-              onSaved: (value) => _email = value!,
+              onSaved: (value) => email = value!,
               validator: (value) {
                 RegExp emailRegex =
                     RegExp(r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$');
-                if (value == null || !emailRegex.hasMatch(value!)) {
+                if (value == null || !emailRegex.hasMatch(value)) {
                   return "Invalid email";
                 }
                 return null;
@@ -84,7 +83,7 @@ class ResetPasswordScreen extends StatelessWidget {
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
                 final auth = AuthService();
-                await auth.resetPassword(_email, context);
+                await auth.resetPassword(email, context);
                 // Call the reset password function
               }
               // Validate inputs before calling _loginUser

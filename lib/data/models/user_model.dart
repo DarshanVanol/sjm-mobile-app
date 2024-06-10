@@ -45,7 +45,7 @@ class User {
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
       name: name ?? this.name,
-      roleCode: roleId ?? this.roleCode,
+      roleCode: roleId ?? roleCode,
     );
   }
 

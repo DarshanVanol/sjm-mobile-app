@@ -7,7 +7,6 @@ import 'package:sjm/data/models/meeting_model.dart';
 import 'package:sjm/data/repositories/meeting_repo.dart';
 import 'package:sjm/ui/screens/widgets/primary_button.dart';
 import 'package:sjm/ui/screens/widgets/textfield_with_label.dart';
-import 'package:sjm/ui/screens/widgets/textformfield_without_label.dart';
 
 class AddMettingScreen extends StatefulWidget {
   static AddMettingScreen builder(BuildContext context, GoRouterState state) =>
@@ -114,7 +113,7 @@ class _AddMettingScreenState extends State<AddMettingScreen> {
                       dateController.text.isEmpty ||
                       timeController.text.isEmpty) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
+                      const SnackBar(
                         content: Text("All fields are required"),
                       ),
                     );
@@ -124,7 +123,7 @@ class _AddMettingScreenState extends State<AddMettingScreen> {
                   // validate if date and time are selected
                   if (selectedDate == null || selectedTime == null) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
+                      const SnackBar(
                         content: Text("Please select date and time"),
                       ),
                     );

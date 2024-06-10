@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sjm/bloc/providers.dart';
 import 'package:sjm/common/primary_appbar.dart';
 import 'package:sjm/common/theme/theme.dart';
 import 'package:sjm/data/models/meeting_model.dart';
-import 'package:sjm/data/models/project_model.dart';
 import 'package:sjm/data/repositories/meeting_repo.dart';
 import 'package:sjm/data/repositories/project_repo.dart';
 import 'package:sjm/gen/assets/assets.gen.dart';
@@ -14,6 +12,8 @@ import 'package:sjm/router/routes_names.dart';
 import 'package:sjm/ui/screens/widgets/popupmenu_btn.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   ConsumerState<HomeScreen> createState() => _HomeScreenState();
 }
@@ -52,14 +52,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 8.h),
           child: SingleChildScrollView(
-            physics: AlwaysScrollableScrollPhysics(),
+            physics: const AlwaysScrollableScrollPhysics(),
             child: Column(
               children: [
                 StreamBuilder(
                   stream: _projectRepository.projectCountsStream,
                   builder: (context, snapshot) => GridView.builder(
                     shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       mainAxisSpacing: 8.w,
@@ -170,7 +170,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   }
 
   Widget upcomingMeetingCard(SmjColors color, Meeting meeting) {
-    final List<PopupMenuEntry> _popupMenuList = [
+    final List<PopupMenuEntry> popupMenuList = [
       PopupMenuItem(
         value: 1,
         height: 20,
@@ -243,7 +243,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       // );
                     }
                   },
-                  popMenuList: _popupMenuList,
+                  popMenuList: popupMenuList,
                 ),
               ],
             ),

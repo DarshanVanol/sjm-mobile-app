@@ -125,6 +125,5 @@ class ProjectCard extends StatelessWidget {
                     ),
                   ),
                 );
-  ;
   }
 }

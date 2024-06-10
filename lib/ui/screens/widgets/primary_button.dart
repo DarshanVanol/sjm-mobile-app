@@ -49,7 +49,7 @@ class PrimaryButton extends StatelessWidget {
                   fontWeight: FontWeight.w400,
                 ),
               ),
-              icon != null ? icon! : SizedBox.shrink(),
+              icon != null ? icon! : const SizedBox.shrink(),
             ],
           ),
         ),

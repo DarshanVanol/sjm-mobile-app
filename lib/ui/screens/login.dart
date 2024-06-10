@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sjm/bloc/firebase_service.dart';
 import 'package:sjm/bloc/providers.dart';
 import 'package:sjm/common/theme/theme.dart';
 import 'package:sjm/gen/assets/assets.gen.dart';
@@ -78,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 validator: (value) {
                   RegExp emailRegex =
                       RegExp(r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$');
-                  if (value == null || !emailRegex.hasMatch(value!)) {
+                  if (value == null || !emailRegex.hasMatch(value)) {
                     return "Invalid email";
                   }
                   return null;
@@ -150,16 +149,16 @@ class _LoginScreenState extends State<LoginScreen> {
                       final result = await auth.signInWithEmailAndPassword(
                           _email.trim(), _password.trim(), context);
                       if (result != null) {
-                        final _pref = ref.read(sharedPrefHelperProvider);
-                        _pref.saveIsLoggedIn(true);
-                        _pref.saveUserEmail(_email.trim());
+                        final pref = ref.read(sharedPrefHelperProvider);
+                        pref.saveIsLoggedIn(true);
+                        pref.saveUserEmail(_email.trim());
 
 // try to get user data from firestore
                         final userRepo = ref.read(userRepositoryProvider);
                         final user = await userRepo.getUser(_email.trim());
                         if (user != null) {
-                          _pref.saveUser(user);
-                          _pref.saveUserName(user.name);
+                          pref.saveUser(user);
+                          pref.saveUserName(user.name);
                           ref.read(userProvider.notifier).state = user;
                         } else {
                           String name = '';
@@ -171,7 +170,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             builder: (context) => Dialog(
                                 backgroundColor: smjColorsExtension.background,
                                 child: Padding(
-                                    padding: EdgeInsets.all(16.0),
+                                    padding: const EdgeInsets.all(16.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
@@ -231,8 +230,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               'updatedAt': DateTime.now().toIso8601String(),
                               'roleId': 'user'
                             });
-                            _pref.saveUserName(user.name);
-                            _pref.saveUser(user);
+                            pref.saveUserName(user.name);
+                            pref.saveUser(user);
                             ref.read(userProvider.notifier).state = user;
                           }
                         }

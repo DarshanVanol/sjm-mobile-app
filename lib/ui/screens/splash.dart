@@ -3,14 +3,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sjm/bloc/providers.dart';
-import 'package:sjm/common/pref/helper.dart';
 import 'package:sjm/gen/assets/assets.gen.dart';
 import 'package:sjm/router/routes_names.dart';
-import 'package:sjm/ui/screens/dashboard.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
+  const SplashScreen({super.key});
+
   static SplashScreen builder(BuildContext context, GoRouterState state) =>
-      SplashScreen();
+      const SplashScreen();
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
@@ -24,11 +24,11 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
 
   Future<void> _navigateToNextScreen() async {
     await Future.delayed(const Duration(seconds: 1));
-    final _pref = ref.read(sharedPrefHelperProvider);
-    final isLoggedIn = _pref.isLoggedIn;
+    final pref = ref.read(sharedPrefHelperProvider);
+    final isLoggedIn = pref.isLoggedIn;
     print("isLoggedin: $isLoggedIn");
     if (isLoggedIn) {
-      final user = _pref.user;
+      final user = pref.user;
       print("user: $user");
       if (user != null) {
         ref.read(userProvider.notifier).state = user;
