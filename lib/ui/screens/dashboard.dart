@@ -49,7 +49,7 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(25.r),
+                borderRadius: BorderRadius.circular(30.r),
                 child: PrimaryBottomNavigation(
                   currentIndex: selectedIndex,
                   onTap: _onBottomNavItemTap,

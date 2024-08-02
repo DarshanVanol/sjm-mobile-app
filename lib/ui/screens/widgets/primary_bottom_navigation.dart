@@ -1,9 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sjm/common/theme/theme.dart';
 import 'package:sjm/gen/assets/assets.gen.dart';
-
 
 class PrimaryBottomNavigation extends StatefulWidget {
   final int currentIndex;
@@ -16,7 +14,8 @@ class PrimaryBottomNavigation extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<PrimaryBottomNavigation> createState() => _PrimaryBottomNavigationState();
+  State<PrimaryBottomNavigation> createState() =>
+      _PrimaryBottomNavigationState();
 }
 
 class _PrimaryBottomNavigationState extends State<PrimaryBottomNavigation> {
@@ -26,10 +25,6 @@ class _PrimaryBottomNavigationState extends State<PrimaryBottomNavigation> {
   Widget build(BuildContext context) {
     final colors = smjColorsExtension;
     return Container(
-      padding: EdgeInsets.symmetric(
-        vertical: 15.h,
-        horizontal: 18.w,
-      ),
       decoration: BoxDecoration(
         color: colors.primary,
         borderRadius: BorderRadius.all(
@@ -37,66 +32,93 @@ class _PrimaryBottomNavigationState extends State<PrimaryBottomNavigation> {
         ),
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          GestureDetector(
+          InkWell(
             onTap: () {
               setState(() {
                 widget.onTap(0);
               });
             },
-            child: _menuItem(
-              icon: SJMAssets.icons.home.svg(
-                width: 30.w,
-                height: 30.w,
-                color: widget.currentIndex == 0 ? colors.primary : colors.lightGrey,
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 22.5.w, vertical: 9.h),
+              child: _menuItem(
+                icon: Icon(
+                  Icons.home_outlined,
+                  size: 28.r,
+                  color: widget.currentIndex == 0
+                      ? colors.primary
+                      : colors.lightGrey,
+                ),
+                // icon: SJMAssets.icons.home.svg(
+                //   width: 35.w,
+                //   height: 30.w,
+                //   color: widget.currentIndex == 0
+                //       ? colors.primary
+                //       : colors.lightGrey,
+                // ),
+                isCurrentIndex: widget.currentIndex == 0,
               ),
-              isCurrentIndex: widget.currentIndex == 0,
             ),
           ),
-          GestureDetector(
+          InkWell(
             onTap: () {
               setState(() {
                 widget.onTap(1);
               });
             },
-            child: _menuItem(
-              icon: SJMAssets.icons.product.svg(
-                color: widget.currentIndex == 1 ? colors.primary : colors.lightGrey,
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 22.5.w, vertical: 9.h),
+              child: _menuItem(
+                icon: SJMAssets.icons.product.svg(
+                  color: widget.currentIndex == 1
+                      ? colors.primary
+                      : colors.lightGrey,
+                ),
+                isCurrentIndex: widget.currentIndex == 1,
               ),
-              isCurrentIndex: widget.currentIndex == 1,
             ),
           ),
-          GestureDetector(
+          InkWell(
             onTap: () {
               setState(() {
                 widget.onTap(2);
               });
             },
-            child: _menuItem(
-              icon: SJMAssets.icons.order.svg(
-                width: 24.w,
-                height: 24.w,
-                fit: BoxFit.cover,
-                color: widget.currentIndex == 2 ? colors.primary : colors.lightGrey,
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 22.5.w, vertical: 9.h),
+              child: _menuItem(
+                icon: SJMAssets.icons.order.svg(
+                  width: 34.w,
+                  height: 24.w,
+                  fit: BoxFit.cover,
+                  color: widget.currentIndex == 2
+                      ? colors.primary
+                      : colors.lightGrey,
+                ),
+                isCurrentIndex: widget.currentIndex == 2,
               ),
-              isCurrentIndex: widget.currentIndex == 2,
             ),
           ),
           // sharedPreferenceHelper.roleId == UserRolesConst.stocks ||
           //         sharedPreferenceHelper.roleId == UserRolesConst.admin
           //     ?
-          GestureDetector(
+          InkWell(
             onTap: () {
               setState(() {
                 widget.onTap(3);
               });
             },
-            child: _menuItem(
-              icon: SJMAssets.icons.customer.svg(
-                color: widget.currentIndex == 3 ? colors.primary : colors.lightGrey,
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 22.5.w, vertical: 9.h),
+              child: _menuItem(
+                icon: SJMAssets.icons.customer.svg(
+                  color: widget.currentIndex == 3
+                      ? colors.primary
+                      : colors.lightGrey,
+                ),
+                isCurrentIndex: widget.currentIndex == 3,
               ),
-              isCurrentIndex: widget.currentIndex == 3,
             ),
           )
           // : SizedBox.shrink(),
@@ -116,7 +138,9 @@ class _PrimaryBottomNavigationState extends State<PrimaryBottomNavigation> {
         height: 34.w,
         width: 34.w,
         decoration: BoxDecoration(
-          color: isCurrentIndex ? smjColorsExtension.white : Colors.transparent, // Update background color
+          color: isCurrentIndex
+              ? smjColorsExtension.white
+              : Colors.transparent, // Update background color
           borderRadius: BorderRadius.circular(20.r),
         ),
         child: UnconstrainedBox(

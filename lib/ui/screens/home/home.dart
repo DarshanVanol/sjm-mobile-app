@@ -272,7 +272,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   width: 4.w,
                 ),
                 Text(
-                  meeting.scheduledOn.toIso8601String() ?? "01/01/2024",
+                  meeting.scheduledOn.toIso8601String(),
                   style: TextStyle(
                       fontWeight: FontWeight.w400,
                       fontSize: 14.sp,

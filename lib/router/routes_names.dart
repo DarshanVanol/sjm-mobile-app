@@ -18,4 +18,6 @@ class SJMRoutes {
   static const addMettingScreen = '/addMeetingScreen';
   static const projectDetailsScreen = '/projectDetailsScreen';
   static const addProjectScreen = '/addProjectScreen';
+  static const addExpenseScreen = '/addExpenseScreen';
+  static const expenseDetailScreen = '/expenseDetailScreen';
 }

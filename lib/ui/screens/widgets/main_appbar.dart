@@ -8,7 +8,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? secLastIc;
   final Widget? thirdLastIc;
   final String? title;
- // final GlobalKey<ScaffoldState> dashboardKey;
+  // final GlobalKey<ScaffoldState> dashboardKey;
 
   const MainAppBar({
     Key? key,
@@ -16,7 +16,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.secLastIc,
     this.title,
     this.thirdLastIc,
-   // required this.dashboardKey,
+    // required this.dashboardKey,
   }) : super(key: key);
 
   @override
@@ -29,7 +29,6 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
       leadingWidth: 28.w,
       centerTitle: false,
       leading: const SizedBox.shrink(),
-
 
       // leading: Padding(
       //   padding:EdgeInsets.only(left: 5.w),
@@ -50,14 +49,13 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
         style: TextStyle(
           color: colors.primary,
           fontWeight: FontWeight.w600,
-          fontSize: 18.sp,
+          fontSize: 20.sp,
         ),
       ),
       elevation: 0,
       actions: [
-       
         secLastIc ?? const SizedBox(),
-         SizedBox(
+        SizedBox(
           width: 16.w,
         ),
         InkWell(
@@ -68,7 +66,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
             fit: BoxFit.fill,
           ),
         ),
-         SizedBox(
+        SizedBox(
           width: 16.w,
         ),
       ],

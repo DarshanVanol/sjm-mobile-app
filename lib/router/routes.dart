@@ -4,6 +4,8 @@ import 'package:sjm/ui/screens/create_password.dart';
 import 'package:sjm/ui/screens/add_meeting_screen.dart';
 import 'package:sjm/ui/screens/dashboard.dart';
 import 'package:sjm/ui/screens/email_sent.dart';
+import 'package:sjm/ui/screens/expense/add_expense_screen.dart';
+import 'package:sjm/ui/screens/expense/expense_detail_screen.dart';
 import 'package:sjm/ui/screens/login.dart';
 import 'package:sjm/ui/screens/project/add_project_screen.dart';
 import 'package:sjm/ui/screens/project/project_details_screen.dart';
@@ -44,8 +46,16 @@ final routes = [
     path: SJMRoutes.projectDetailsScreen,
     builder: (context, state) => ProjectDetailsScreen.builder(context, state),
   ),
-    GoRoute(
+  GoRoute(
     path: SJMRoutes.addProjectScreen,
     builder: (context, state) => AddProjectScreen.builder(context, state),
+  ),
+  GoRoute(
+    path: SJMRoutes.addExpenseScreen,
+    builder: (context, state) => AddExpenseScreen.builder(context, state),
+  ),
+  GoRoute(
+    path: SJMRoutes.expenseDetailScreen,
+    builder: (context, state) => ExpenseDetailsScreen.builder(context, state),
   ),
 ];

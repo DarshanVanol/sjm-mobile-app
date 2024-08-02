@@ -31,8 +31,9 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    paymentStatus=PaymentStatus.Paid;
+    paymentStatus = PaymentStatus.Paid;
   }
+
   Widget build(BuildContext context) {
     final color = smjColorsExtension;
     return Scaffold(
@@ -150,7 +151,7 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
                 enableOutlinedBorder: true,
                 validator: (p0) {},
               ),
-                SizedBox(
+              SizedBox(
                 height: 16.h,
               ),
               Text(
@@ -161,37 +162,39 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-                SizedBox(
+              SizedBox(
                 height: 6.h,
               ),
               RadioButton(
-                  groupValue: paymentStatus,
-                  type1: PaymentStatus.Paid,
-                  type2: PaymentStatus.UnPaid,
-                  onChange: (value) {
-                    paymentStatus = value;
-                    setState(
-                      () {
-                        // _fistNameController = TextEditingController();
-                        // _lastNameController = TextEditingController();
-                        // customerType == CustomerType.individual ? _businessNameController.clear() : null;
-                      },
-                    );
+                groupValue: paymentStatus,
+                type1: PaymentStatus.Paid,
+                type2: PaymentStatus.UnPaid,
+                onChange: (value) {
+                  paymentStatus = value;
+                  setState(
+                    () {
+                      // _fistNameController = TextEditingController();
+                      // _lastNameController = TextEditingController();
+                      // customerType == CustomerType.individual ? _businessNameController.clear() : null;
+                    },
+                  );
 
-                    //    print(customerType);
-                  },
+                  //    print(customerType);
+                },
+              ),
+              SizedBox(
+                height: 24.h,
+              ),
+              PrimaryButton(
+                text: "Save",
+                padding: EdgeInsets.symmetric(
+                  vertical: 16.h,
                 ),
-                SizedBox(height: 24.h,),
-        PrimaryButton(
-                  text: "Save",
-                  padding: EdgeInsets.symmetric(
-                    vertical: 16.h,
-                  ),
-                  onPressed: () async {
-                 
-                  },
-                ),
-                  SizedBox(height: 24.h,),
+                onPressed: () async {},
+              ),
+              SizedBox(
+                height: 24.h,
+              ),
             ],
           ),
         ),
@@ -199,4 +202,5 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
     );
   }
 }
+
 enum PaymentStatus { Paid, UnPaid }
